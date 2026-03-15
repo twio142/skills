@@ -1,0 +1,14 @@
+{
+  "name": "twio142",
+  "owner": {
+    "name": "twio142",
+    "url": "https://github.com/twio142"
+  },
+  "plugins": [
+    {
+      "name": "custom-skills",
+      "source": "./",
+      "description": "My custom skills"
+    }
+  ]
+}

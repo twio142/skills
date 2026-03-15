@@ -1,0 +1,12 @@
+{
+  "name": "custom-skills",
+  "version": "1.0.0",
+  "description": "",
+  "author": {
+    "name": "twio142",
+    "url": "https://github.com/twio142"
+  },
+  "repository": "https://github.com/twio142/skills",
+  "license": "MIT",
+  "keywords": []
+}
