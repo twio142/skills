@@ -19,8 +19,9 @@ npx skills add git@github.com:twio142/skills.git
 
 ## Skills
 
-| Skill              | Description                         |
-| ------------------ | ----------------------------------- |
-| editor             | Interaction with my editor          |
-| obsidian           | Interaction with my Obsidian vault  |
-| youtube-summarizer | Summarize YouTube videos via yt-dlp |
+| Skill              | Description                                                          |
+| ------------------ | -------------------------------------------------------------------- |
+| editor             | Interaction with my editor                                           |
+| obsidian           | Interaction with my Obsidian vault                                   |
+| youtube-summarizer | Summarize YouTube videos via yt-dlp                                  |
+| media-transcript   | Load transcript and metadata from YouTube, Bilibili, or podcast URLs |
