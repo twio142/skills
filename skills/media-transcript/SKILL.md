@@ -117,12 +117,11 @@ transcript-cli /tmp/podcast_audio.<ext> --api groq --srt
 
 ## Output
 
-Write the results to `/tmp/media_transcript.md` in this structure:
+Hold the following structure in context. Do NOT write to any file at this stage:
 
 ```
 # <Title>
 **<Uploader / Show>** · <Duration>
-<URL>
 
 ## Description
 <description or shownotes>
@@ -131,7 +130,36 @@ Write the results to `/tmp/media_transcript.md` in this structure:
 <transcript>
 ```
 
-Then read the file into context with the Read tool. Do not summarize unless the user asks — just confirm the content is loaded and ready.
+Confirm to the user that the content is loaded, then use the `AskUserQuestion` tool to ask:
+
+- Question: "Would you like to save the transcript?"
+- Header: "Save"
+- Options:
+    - "Save to current directory" — write as a `.md` file in cwd
+    - "Save as Obsidian note" — create a note in the Obsidian vault
+    - "Skip" — do not save
+
+When saving, use this file format (with frontmatter):
+
+```markdown
+---
+url: <URL>
+tags:
+  - <one or two relevant topic tags>
+---
+# <Title>
+**<Uploader / Show>** · <Duration>
+
+## Description
+<description or shownotes>
+
+## Transcript
+<transcript>
+```
+
+**Option 1 — Save to cwd**: Write the file to `<title>.md` in the current working directory, replacing `:` and `/` with `-` in the filename.
+
+**Option 2 — Save as Obsidian note**: Use the `custom-skills:obsidian` skill to create a note with the content above. Use the title as the note name, replacing `:` and `/` with `-`.
 
 ## Error handling
 

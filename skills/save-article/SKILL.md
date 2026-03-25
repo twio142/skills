@@ -39,7 +39,6 @@ Save a web article as a clean Obsidian markdown note.
       - <one or two relevant topic tags>
     url: <original article URL>
     ---
-
     # <Article Title>
 
     > <Author, if known> · <Publication date, if known>
@@ -51,9 +50,13 @@ Save a web article as a clean Obsidian markdown note.
     - If the current working directory is the vault root (contains a `CLAUDE.md` that describes an Obsidian vault), write the file directly using the Write tool.
     - Otherwise, use the `obsidian` CLI skill (`/obsidian`) to save the note to the vault.
 
-7. **After saving**, tell the user the filename and offer:
-    - "Open in Obsidian" — provide the obsidian URI: `obsidian://open?vault=Markdown&file=<encoded filename>`
-    - "Open in editor" — suggest they run `! nvim-agent -- "<filepath>"`
+7. **After saving**, tell the user the filename, then use the `AskUserQuestion` tool to ask:
+    - Question: "What would you like to do next?"
+    - Header: "Open"
+    - Options:
+        - "Open in Obsidian" — open with `obsidian://open?vault=Markdown&file=<encoded filename>`
+        - "Open in editor" — run `nvim-agent -- "<filepath>"`
+        - "Nothing" — done
 
 ## Notes
 
