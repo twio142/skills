@@ -10,9 +10,17 @@ allowed-tools:
 
 Save a web article as a clean Obsidian markdown note.
 
+**CRITICAL: Copy the article body verbatim.** Do NOT rewrite, condense, restructure, or paraphrase any sentence. The only edits allowed are removing boilerplate (step 3). Every word in the body must be the author's, not yours.
+
+## Execution model
+
+**Always delegate this entire skill to a general-purpose subagent** using the Agent tool. Pass the full skill instructions and the URL as the prompt. This keeps the main context window free for the conversation.
+
+The subagent should complete all steps below (fetch → clean → save → open), then **return the cleaned article content** in its result. Once it returns, summarize the saved filename to the user.
+
 ## Steps
 
-1. **Fetch** the article using the `mcp__jina-mcp-server__read_url` tool with the URL the user provided.
+1. **Fetch** the article using the `mcp__jina-mcp-server__read_url` tool with the URL the user provided, passing `withAllImages: true` and `withAllLinks: true`.
 
 2. **If the fetch fails or returns no meaningful content**, stop immediately and tell the user you couldn't retrieve the article. Do not proceed.
 
@@ -60,7 +68,6 @@ Save a web article as a clean Obsidian markdown note.
 
 ## Notes
 
-- Preserve the article's original wording — do not summarize or paraphrase.
 - Use `-` for list items, 4-space indentation.
 - If the article has no clear title, derive one from the URL slug.
-- Topic tags should be lowercase single words (e.g. `ai`, `coding`, `design`, `psychology`). Use 1–2 tags only.
+- Topic tags should be lowercase single words (e.g. `ai`, `coding`, `design`, `psychology`).
