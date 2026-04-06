@@ -10,8 +10,6 @@ allowed-tools:
 
 Interact with the user's active Obsidian vault via the `obsidian` CLI. The CLI talks directly to the running Obsidian app and is preferred over filesystem manipulation for anything that involves Obsidian's features (link resolution, tags, metadata, properties, plugins).
 
-**Always append `2>/dev/null`** to every `obsidian` command — this suppresses Electron noise on macOS without hiding actual output.
-
 ---
 
 **When to use the CLI vs direct file actions:**
