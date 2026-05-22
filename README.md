@@ -17,6 +17,13 @@ These skills follow the [Agent Skills specification](https://agentskills.io/spec
 npx skills add git@github.com:twio142/skills.git
 ```
 
+## MCP Servers
+
+| Server          | Description                                                |
+| --------------- | ---------------------------------------------------------- |
+| jina-mcp-server | Web access and content retrieval (requires `JINA_API_KEY`) |
+| deepwiki        | Deep wiki search via `mcp-deepwiki`                        |
+
 ## Skills
 
 | Skill              | Description                                                          |
