@@ -1,6 +1,6 @@
 ---
 name: youtube-summarizer
-description: Summarizes YouTube videos by extracting transcripts and metadata using yt-dlp. Use this skill whenever the user shares a YouTube URL and wants a summary, overview, notes, or key takeaways from the video.
+description: Summarizes YouTube videos using the video's own subtitles and metadata. Use when the user shares a YouTube URL and wants a summary, notes, or key takeaways.
 allowed-tools:
   - Bash(yt-dlp *)
 ---

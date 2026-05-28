@@ -1,6 +1,6 @@
 ---
 name: media-transcript
-description: Load a video or podcast episode into context by fetching its title, description, and transcript. Trigger when the user shares a YouTube, Bilibili, or podcast URL (e.g. pca.st, pocketcasts.com) and wants to discuss, summarize, or ask questions about it.
+description: Load a video or podcast into context by fetching its title, description, and transcript via audio transcription. Use for Bilibili, podcast, or YouTube URLs without available subtitles. Trigger when the user shares a URL and wants to discuss, summarize, or ask questions about it.
 ---
 
 # Media Transcript Loader

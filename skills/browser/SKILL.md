@@ -1,6 +1,6 @@
 ---
 name: browser-tab
-description: Read and discuss the user's browser tabs. Use this skill whenever the user wants Claude to look at, read, summarize, or discuss what's currently open in their browser. Triggers on phrases like "look at my tab", "what's on this page", "read this page", "can you see my browser", "what am I looking at", "summarize this tab", "check my browser", "what does this page say", "read the current tab", or any time the user shares context suggesting they want Claude to see their browser content.
+description: Read and discuss the user's browser tabs. Use this skill whenever the user wants Claude to see or discuss what's currently open in their browser. Triggers on phrases like "what's on this page", "check my browser", or "read the current tab".
 allowed-tools:
   - Bash(browser-cli *)
 ---

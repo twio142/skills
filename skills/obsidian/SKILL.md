@@ -1,7 +1,6 @@
 ---
 name: obsidian
-description: |
-  Interact with the user's Obsidian vault using the obsidian CLI. Use this skill whenever the user references their notes, vault, Obsidian, wants to read/search/create/update notes, manage tasks in their vault, find backlinks, search by tag, or do anything with their personal knowledge base. Trigger this even if the user doesn't say "Obsidian" explicitly — phrases like "my notes", "add a note", "search my vault", "check my tasks", "find notes about X", or "add to my knowledge base" all warrant this skill.
+description: Interact with the user's Obsidian vault using the obsidian CLI. Use this skill whenever the user references their notes or vault, wants to read/search/create/update notes, manage tasks, find backlinks, or search by tag.
 allowed-tools:
   - Bash(obsidian *)
 ---

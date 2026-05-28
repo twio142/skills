@@ -1,6 +1,6 @@
 ---
 name: save-article
-description: Use this skill when the user gives a URL and asks to save, clip, or archive the article to the vault / notes.
+description: Use this skill when the user gives a URL and asks to save or clip the article to their Obsidian vault.
 allowed-tools:
   - Bash(obsidian *)
   - Bash(nvim-agent *)

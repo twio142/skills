@@ -1,10 +1,10 @@
 ---
 name: editor
 description: |
-  Neovim editor integration for getting context from and opening files in the user's active Neovim instance.
+  Neovim integration for editor context and file navigation.
   Apply this skill automatically whenever you need to know what file the user is looking at, where their cursor is,
   what they have selected, or when you want to open/navigate to a file after editing it.
-  When running inside an IDE context (nvim with claudecode.nvim), prefer mcp__ide__* tools over nvim-agent.
+  Prefer mcp__ide__* tools over nvim-agent when in an IDE context (claudecode.nvim).
 allowed-tools:
   - Bash(nvim-agent *)
   - mcp__ide__*
