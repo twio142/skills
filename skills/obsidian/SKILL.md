@@ -7,7 +7,17 @@ allowed-tools:
 
 # Obsidian
 
-Interact with the user's active Obsidian vault via the `obsidian` CLI. The CLI talks directly to the running Obsidian app and is preferred over filesystem manipulation for anything that involves Obsidian's features (link resolution, tags, metadata, properties, plugins).
+**Useful CLI examples:**
+
+Get the currently active file:
+```
+obsidian file active
+```
+
+Get the current editor selection (always includes the active file path for context):
+```
+obsidian eval code="const v=app.workspace.activeLeaf.view; console.log(v.file?.path+'\n'+v.editor.getSelection())"
+```
 
 ---
 
@@ -21,6 +31,7 @@ Only reach for the `obsidian` CLI when the task specifically requires Obsidian's
 - Listing tasks across the vault or a subtree (when you don't have exact locations)
 - Triggering plugin commands
 - Targeting a vault by name when not working from its directory
+- Getting the currently active file or editor state
 
 If you already know the file path — for tasks, properties, or anything else — just edit the file directly.
 
