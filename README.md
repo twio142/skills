@@ -34,3 +34,4 @@ npx skills add git@github.com:twio142/skills.git
 | youtube-summarizer | Summarize YouTube videos via yt-dlp                                  |
 | media-transcript   | Load transcript and metadata from YouTube, Bilibili, or podcast URLs |
 | save-article       | Save a web article to Obsidian                                       |
+| defuddle           | Extract clean markdown from a URL                                    |
