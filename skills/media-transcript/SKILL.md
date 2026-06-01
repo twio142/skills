@@ -1,6 +1,6 @@
 ---
 name: media-transcript
-description: Load a video or podcast into context by fetching its title, description, and transcript via audio transcription. Use for Bilibili, podcast, or YouTube URLs without available subtitles. Trigger when the user shares a URL and wants to discuss, summarize, or ask questions about it.
+description: Load a video or audio into context by fetching its title, description, and transcript via audio transcription. Use for BiliBili, podcast, or YouTube URLs without available subtitles. Trigger when the user shares a media URL and wants to discuss, summarize, or ask questions about it.
 ---
 
 # Media Transcript Loader

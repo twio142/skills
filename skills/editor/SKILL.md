@@ -1,10 +1,6 @@
 ---
 name: editor
-description: |
-  Neovim integration for editor context and file navigation.
-  Apply this skill automatically whenever you need to know what file the user is looking at, where their cursor is,
-  what they have selected, or when you want to open/navigate to a file after editing it.
-  Prefer mcp__ide__* tools over nvim-agent when in an IDE context (claudecode.nvim).
+description: Neovim integration to get editor context (current file, cursor, selection) or navigate to a file after editing.
 allowed-tools:
   - Bash(nvim-agent *)
   - mcp__ide__*
@@ -12,10 +8,11 @@ allowed-tools:
 
 # Editor Integration
 
-The user's primary editor is Neovim. When in an IDE context (claudecode.nvim active), prefer `mcp__ide__*` tools
-over `nvim-agent`. Fall back to `nvim-agent` for anything not covered by IDE tools (e.g. cursor position).
+The user's primary editor is Neovim.
+When in an IDE context, prefer `mcp__ide__*` tools.
+Fall back to `nvim-agent` for anything not covered by IDE tools (e.g. cursor position).
 
-## nvim-agent reference
+## `nvim-agent` reference
 
 ```bash
 nvim-agent filepath                       # Current buffer's file path
@@ -33,4 +30,3 @@ nvim-agent -- -d file1 file2              # Open diff view
 
 - Always retrieve the current file path alongside cursor position, selection, or diagnostics for context.
 - When the user asks about their cursor position, read the file content at that position.
-- After editing a file, offer to open it in the editor at the relevant line.
