@@ -1,11 +1,9 @@
 ---
-name: browser-tab
+name: browser
 description: Inspect the user's browser tabs. Use when the user wants to discuss what's currently open in their browser. Triggers on phrases like "what's on this page", "check my browser", or "read the current tab" — NOT when they provide a URL to fetch.
-allowed-tools:
-  - Bash(browser-cli *)
 ---
 
-# Browser Tab Skill
+# Browser Tab Inspector
 
 Omit `--browser` to use the system default.
 

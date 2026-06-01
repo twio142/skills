@@ -1,6 +1,8 @@
 ---
 name: defuddle
 description: Extract clean markdown from a URL using Defuddle CLI. Use when saving or using the original text or metadata from a URL.
+allowed-tools:
+  - Bash(defuddle *)
 ---
 
 # Defuddle

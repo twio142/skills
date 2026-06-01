@@ -1,8 +1,6 @@
 ---
-name: youtube-summarizer
+name: youtube-summary
 description: Summarizes YouTube videos using the video's own subtitles and metadata. Use when the user shares a YouTube URL and wants a summary, notes, or key takeaways.
-allowed-tools:
-  - Bash(yt-dlp *)
 ---
 
 # YouTube Video Summarizer
@@ -33,8 +31,6 @@ If English subtitles aren't available, try `--sub-lang en,en-US,en-GB` or omit `
 
 ## Step 3: Parse the transcript
 
-Use this Python snippet to extract clean, ordered transcript text:
-
 ```python
 import re
 
@@ -44,16 +40,13 @@ with open('/tmp/yt_transcript.en.vtt', 'r') as f:
 lines = content.split('\n')
 text_lines = []
 for line in lines:
-    # Skip VTT metadata and timestamp lines
     if re.match(r'^\d{2}:\d{2}', line) or line.startswith('WEBVTT') or \
        line.startswith('Kind:') or line.startswith('Language:') or not line.strip():
         continue
-    # Strip HTML tags (e.g. <c>, <00:00:01.000>)
     clean = re.sub(r'<[^>]+>', '', line).strip()
     if clean:
         text_lines.append(clean)
 
-# Deduplicate consecutive identical lines (VTT often repeats lines)
 deduped = []
 prev = None
 for line in text_lines:

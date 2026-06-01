@@ -1,11 +1,13 @@
 ---
 name: obsidian
-description: Interact with the user's Obsidian vault using the obsidian CLI. Use this skill whenever the user references their notes or vault, wants to read/search/create/update notes, manage tasks, find backlinks, or search by tag.
+description: Interact with the user's Obsidian vault using the obsidian CLI. Use this skill whenever the user references their notes or vault, wants to read/search/create/update notes, manage tasks, find backlinks, search by tag, or save a web article to the vault.
 allowed-tools:
   - Bash(obsidian *)
 ---
 
 # Obsidian
+
+To save a web article to the vault, read [rules/save-article.md](rules/save-article.md) and follow those instructions.
 
 ## Useful CLI examples
 

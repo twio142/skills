@@ -26,12 +26,9 @@ npx skills add git@github.com:twio142/skills.git
 
 ## Skills
 
-| Skill              | Description                                                          |
-| ------------------ | -------------------------------------------------------------------- |
-| editor             | Interaction with my editor                                           |
-| browser            | Access to my browser tabs, content, and screenshots                  |
-| obsidian           | Interaction with my Obsidian vault                                   |
-| youtube-summarizer | Summarize YouTube videos via yt-dlp                                  |
-| media-transcript   | Load transcript and metadata from YouTube, Bilibili, or podcast URLs |
-| save-article       | Save a web article to Obsidian                                       |
-| defuddle           | Extract clean markdown from a URL                                    |
+| Skill    | Description                                                                                      |
+| -------- | ------------------------------------------------------------------------------------------------ |
+| editor   | Interaction with my editor                                                                       |
+| obsidian | Interaction with my Obsidian vault; includes saving web articles                                 |
+| media    | Discuss or process online content: YouTube summaries, media transcripts, and browser tab reading |
+| defuddle | Extract clean markdown from a URL                                                                |
