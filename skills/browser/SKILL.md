@@ -1,13 +1,13 @@
 ---
 name: browser-tab
-description: Read and discuss the user's browser tabs. Use this skill whenever the user wants Claude to see or discuss what's currently open in their browser. Triggers on phrases like "what's on this page", "check my browser", or "read the current tab".
+description: Inspect the user's browser tabs. Use when the user wants to discuss what's currently open in their browser. Triggers on phrases like "what's on this page", "check my browser", or "read the current tab" — NOT when they provide a URL to fetch.
 allowed-tools:
   - Bash(browser-cli *)
 ---
 
 # Browser Tab Skill
 
-This skill reads the user's browser tabs.
+Omit `--browser` to use the system default.
 
 ## Commands
 
@@ -16,48 +16,25 @@ browser-cli list [--browser chrome|safari|arc]
     → JSON array of tabs: [{id (win:tab), title, url, active}]
 
 browser-cli html [--browser chrome|safari|arc] [--tab <win>:<tab>]
-    → raw HTML of the active tab (or specified tab)
+    → raw HTML of the active (or specified) tab
+
+browser-cli selection [--browser chrome|safari|arc]
+    → JSON {title, url, selection} — selection is "" if nothing is selected
 
 browser-cli screenshot [--browser arc] [--tab <win>:<tab>] [--output <path.png>]
     → Arc only — saves PNG to path (or clipboard if --output omitted)
 ```
 
-Omit `--browser` to use the system default browser (do this by default).
+## Workflow
 
-## Default workflow
-
-When the user wants you to see their active tab:
-
-1. **Get context** — run `browser-cli list` to find the active tab (title + URL). This is fast and always works.
-
-2. **Read content** — run `browser-cli html` to get the page HTML. Extract the meaningful text from the HTML (ignore `<script>`, `<style>`, nav boilerplate) and use it to answer the user's question.
-
-3. **Screenshot** — if the user asks to *see* the page visually (e.g. "look at", "show me", "what does it look like"), run:
-   ```
-   browser-cli screenshot --output /tmp/browser-tab-$(date +%s).png
-   ```
-   If it fails (unsupported browser), fall back to `html`. Otherwise read the PNG with your image tool.
-
-## Choosing the right approach
-
-| User says | What to do |
-|-----------|-----------|
-| "what's on this page" / "summarize" | `html` → extract text → summarize |
-| "read this" / "look at my tab" | `html` → extract text → engage |
-| "what does this page look like" | `screenshot` (Arc) or `html` fallback |
-| "which tab am I on" | `list` → report active tab title + URL |
-
-## HTML extraction
-
-If a skill for extracting clean content from raw HTML is available, use it. Otherwise, focus on:
-- `<title>`, `<h1>`–`<h3>` for structure
-- `<article>`, `<main>`, `<p>` for body content
-- Skip `<nav>`, `<footer>`, `<script>`, `<style>`, `<svg>`
-
-If the HTML is very large, summarize the key content rather than dumping raw text.
+| User wants | What to do |
+|---|---|
+| page content / summary | `html` → extract text (skip `<script>`, `<style>`, nav, footer) |
+| selected text | `selection` → use `selection` field; fall back to `html` if empty |
+| visual look | `screenshot --output /tmp/browser-tab-$(date +%s).png` → read PNG; fall back to `html` if unsupported |
+| which tab | `list` → report active tab title + URL |
 
 ## Error handling
 
-- **Browser not running**: the command exits non-zero with a message — tell the user which browser to open.
-- **Screenshot on non-Arc**: falls back gracefully — use `html` instead.
-- **No active tab**: `list` returns an empty array — ask the user to open a tab.
+- **Browser not running**: exits non-zero — tell the user to open it.
+- **No active tab**: `list` returns empty — ask the user to open a tab.
