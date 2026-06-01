@@ -7,7 +7,7 @@ allowed-tools:
 
 # Obsidian
 
-**Useful CLI examples:**
+## Useful CLI examples
 
 Get the currently active file:
 ```
@@ -19,20 +19,45 @@ Get the current editor selection (always includes the active file path for conte
 obsidian eval code="const v=app.workspace.activeLeaf.view; console.log(v.file?.path+'\n'+v.editor.getSelection())"
 ```
 
+## Command reference
+
+Run `obsidian help` for all available commands.
+
+## Syntax
+
+Parameters use `=`, flags are bare. Quote values with spaces. Use `\n`/`\t` for multiline content:
+
+```bash
+obsidian create name="My Note" content="Hello\nWorld" silent overwrite
+```
+
+## File targeting
+
+- `file=<name>` — wikilink-style (name only, no path or extension)
+- `path=<path>` — exact path from vault root
+- Omit both to target the active file
+
+Use `vault=<name>` as the first parameter to target a specific vault.
+
+## Common patterns
+
+```bash
+obsidian read file="My Note"
+obsidian create name="New Note" content="# Hello" template="Template" silent
+obsidian append file="My Note" content="New line"
+obsidian search query="search term" limit=10
+obsidian daily:read
+obsidian daily:append content="- [ ] New task"
+obsidian property:set name="status" value="done" file="My Note"
+obsidian tasks daily todo
+obsidian tags sort=count counts
+obsidian backlinks file="My Note"
+```
+
+Use `--copy` to copy output to clipboard, `silent` to prevent files from opening, `total` on list commands for a count.
+
 ---
 
-**When to use the CLI vs direct file actions:**
+## When to use the CLI vs direct file actions
 
-If the session is started from inside the vault directory, the notes are local files — always prefer `Read`, `Edit`, `Write`, `Glob`, and `Grep` for reading and writing content. They're faster, don't require Obsidian to be running, and keep the context clean.
-
-Only reach for the `obsidian` CLI when the task specifically requires Obsidian's own machinery:
-- Resolving wikilinks or backlinks
-- Finding notes by tag
-- Listing tasks across the vault or a subtree (when you don't have exact locations)
-- Triggering plugin commands
-- Targeting a vault by name when not working from its directory
-- Getting the currently active file or editor state
-
-If you already know the file path — for tasks, properties, or anything else — just edit the file directly.
-
-When in doubt: if you can do it with a file tool, do it with a file tool.
+If the session is started from **inside the vault directory**, prefer `Read`, `Edit`, `Write`, `Glob`, and `Grep` for reading and writing content. Only reach for the `obsidian` CLI when the task specifically requires Obsidian's own machinery.
