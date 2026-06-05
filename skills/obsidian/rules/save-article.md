@@ -5,7 +5,7 @@ description: Use this skill when the user gives a URL and asks to save or clip t
 
 # Save Article to Obsidian
 
-Save a web article as a clean Obsidian note using Defuddle to extract content.
+Save a web article as a clean Obsidian note using `defuddle` to extract content.
 
 ## Steps
 
@@ -15,7 +15,7 @@ Save a web article as a clean Obsidian note using Defuddle to extract content.
     defuddle parse <url> --md
     ```
 
-    If defuddle fails or returns no meaningful content, stop and tell the user.
+    If `defuddle` fails or returns no meaningful content, stop and tell the user.
 
 2. **Derive a filename** from the article title:
     - Replace colons (`:`) with ` -`
@@ -42,12 +42,12 @@ Save a web article as a clean Obsidian note using Defuddle to extract content.
 
 4. **Save**:
     - If the cwd is the vault root (contains a `CLAUDE.md` describing an Obsidian vault), use the Write tool directly.
-    - Otherwise, use the `obsidian` CLI to save to the vault.
+    - Otherwise, use the `obsidian` CLI:
+        ```bash
+        obsidian create name="<filename without extension>" content="<note content>" silent
+        ```
 
-5. **After saving**, tell the user the filename, then ask:
-    - Question: "What would you like to do next?"
-    - Header: "Open"
-    - Options:
-        - "Open in Obsidian" — `obsidian://open?vault=Markdown&file=<encoded filename>`
-        - "Open in editor" — `nvim-agent -- "<filepath>"`
-        - "Nothing"
+5. **After saving**, tell the user the filename, then use `AskUserQuestion` to ask what to do next, with options:
+    - "Open in Obsidian" — run `obsidian://open?file=<URL-encoded filename>`
+    - "Open in editor" — run `nvim-agent -- "<filepath>"`
+    - "Nothing"

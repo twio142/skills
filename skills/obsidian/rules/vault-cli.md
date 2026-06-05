@@ -7,7 +7,7 @@ description: Use the vault CLI for semantic search and navigation within the Obs
 
 ## Session Start
 
-Run a quick incremental refresh before using `vault` for the first time:
+Run a quick incremental refresh before using `vault` **for the first time** (use `run_in_background: true`):
 
 ```bash
 vault index
