@@ -3,11 +3,20 @@ name: obsidian
 description: Interact with the user's Obsidian vault using the obsidian CLI. Use this skill whenever the user references their notes or vault, wants to read/search/create/update notes, manage tasks, find backlinks, search by tag, or save a web article to the vault.
 allowed-tools:
   - Bash(obsidian *)
+  - Bash(vault *)
 ---
 
 # Obsidian
 
-To save a web article to the vault, read [rules/save-article.md](rules/save-article.md) and follow those instructions.
+## When to use which tool
+
+The `obsidian` CLI requires an open Obsidian window. Prefer alternatives when possible:
+
+- **Reading/writing content**: If inside the vault directory, use `Read`, `Edit`, `Write`, `Glob`, `Grep` directly.
+- **Searching/reading notes**: Always prefer `vault` — it's semantic and works without Obsidian open. See [rules/vault-cli.md](rules/vault-cli.md).
+- **`obsidian` CLI**: Only when the task requires Obsidian's own machinery: tags, properties, tasks, creating from a template.
+
+To save a web article to the vault, follow [rules/save-article.md](rules/save-article.md).
 
 ## Useful CLI examples
 
@@ -21,7 +30,19 @@ Get the current editor selection (always includes the active file path for conte
 obsidian eval code="const v=app.workspace.activeLeaf.view; console.log(v.file?.path+'\n'+v.editor.getSelection())"
 ```
 
-## Command reference
+## Common patterns
+
+```bash
+obsidian tags sort=count counts
+obsidian property:set name="status" value="done" file="My Note"
+obsidian create name="New Note" content="# Hello" template="Template" silent
+obsidian backlinks file="My Note" # prefer `vault neighbors`
+obsidian search query="search term" limit=10 # prefer `vault search`
+obsidian read file="My Note" # prefer `vault read` or local file read
+obsidian append file="My Note" content="New line" # prefer local file write
+```
+
+Use `--copy` to copy output to clipboard, `silent` to prevent files from opening, `total` on list commands for a count.
 
 Run `obsidian help` for all available commands.
 
@@ -40,26 +61,3 @@ obsidian create name="My Note" content="Hello\nWorld" silent overwrite
 - Omit both to target the active file
 
 Use `vault=<name>` as the first parameter to target a specific vault.
-
-## Common patterns
-
-```bash
-obsidian read file="My Note"
-obsidian create name="New Note" content="# Hello" template="Template" silent
-obsidian append file="My Note" content="New line"
-obsidian search query="search term" limit=10
-obsidian daily:read
-obsidian daily:append content="- [ ] New task"
-obsidian property:set name="status" value="done" file="My Note"
-obsidian tasks daily todo
-obsidian tags sort=count counts
-obsidian backlinks file="My Note"
-```
-
-Use `--copy` to copy output to clipboard, `silent` to prevent files from opening, `total` on list commands for a count.
-
----
-
-## When to use the CLI vs direct file actions
-
-If the session is started from **inside the vault directory**, prefer `Read`, `Edit`, `Write`, `Glob`, and `Grep` for reading and writing content. Only reach for the `obsidian` CLI when the task specifically requires Obsidian's own machinery.
