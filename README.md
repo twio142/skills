@@ -24,6 +24,12 @@ npx skills add git@github.com:twio142/skills.git
 | jina-mcp-server | Web access and content retrieval (requires `JINA_API_KEY`) |
 | deepwiki        | Deep wiki search via `mcp-deepwiki`                        |
 
+## Agents
+
+| Agent | Description                                                                               |
+| ----- | ----------------------------------------------------------------------------------------- |
+| vault | Dedicated agent for searching, reading, creating, and editing notes in the Obsidian vault |
+
 ## Skills
 
 | Skill    | Description                                                                                      |
