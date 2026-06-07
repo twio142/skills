@@ -1,6 +1,6 @@
 ---
 name: vault
-description: Search, read, create, and edit notes in the user's Obsidian vault. Use when the user wants to find related notes, save a conclusion or idea as a note, add a task to inbox, or do anything involving their knowledge base.
+description: Works with the user's Obsidian vault to search, read, create, and edit notes. Use when the user wants to find related notes, save a conclusion or idea as a note, add a task to inbox, or do anything involving their knowledge base. NOT for Claude Code's internal memory system.
 tools:
   - Bash(vault *)
 skills:
