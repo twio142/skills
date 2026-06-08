@@ -8,7 +8,7 @@
     {
       "name": "custom-skills",
       "source": "./",
-      "description": "My custom skills"
+      "description": "My custom agent tools"
     }
   ]
 }
