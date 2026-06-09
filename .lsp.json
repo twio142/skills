@@ -1,0 +1,24 @@
+{
+  "vtsls": {
+    "command": "vtsls",
+    "args": ["--stdio"],
+    "extensionToLanguage": {
+      ".js": "javascript",
+      ".jsx": "javascriptreact",
+      ".mjs": "javascript",
+      ".cjs": "javascript",
+      ".ts": "typescript",
+      ".tsx": "typescriptreact",
+      ".mts": "typescript",
+      ".cts": "typescript"
+    }
+  },
+  "zuban": {
+    "command": "zuban",
+    "args": ["server"],
+    "extensionToLanguage": {
+      ".py": "python",
+      ".pyi": "python"
+    }
+  }
+}

@@ -17,6 +17,13 @@ These skills follow the [Agent Skills specification](https://agentskills.io/spec
 npx skills add git@github.com:twio142/skills.git
 ```
 
+## LSP Servers
+
+| Server | Languages              |
+| ------ | ---------------------- |
+| vtsls  | JavaScript, TypeScript |
+| zuban  | Python                 |
+
 ## MCP Servers
 
 | Server          | Description                                                |
